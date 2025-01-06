@@ -39,7 +39,7 @@ public class UserService {
                 new UsernamePasswordAuthenticationToken(user.getUsername(), user.getPassword()));
 
         if (authentication.isAuthenticated()) {
-            String token = jwtService.generateToken();
+            String token = jwtService.generateToken(authentication.getName());
             return "Login Success with token: " + token;
         }
 
