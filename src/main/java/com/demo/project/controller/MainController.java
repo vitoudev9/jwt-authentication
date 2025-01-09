@@ -1,13 +1,12 @@
 package com.demo.project.controller;
 
 import com.demo.project.model.Users;
-import com.demo.project.service.MyUserDetailsService;
 import com.demo.project.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-public class Controller {
+public class MainController {
 
     @Autowired
     private UserService userService;
@@ -22,6 +21,11 @@ public class Controller {
         return "Sneaky beaky like";
     }
 
+    @GetMapping("/hi")
+    public String hi() {
+        return "Why it's not printing";
+    }
+
     @PostMapping("/register")
     public Users registerUsers(@RequestBody Users user) {
         return userService.register(user);
@@ -29,7 +33,6 @@ public class Controller {
 
     @PostMapping("/login")
     public String login(@RequestBody Users user) {
-        System.out.println(user);
         return userService.verify(user);
     }
 }
